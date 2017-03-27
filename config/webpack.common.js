@@ -15,14 +15,14 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['*', '.js', '.ts']
+        extensions: ['.ts', '.js', '.json']
     },
 
     module: {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: ['awesome-typescript-loader', 'angular2-template-loader'] // files will pass through right to left loaders template-loader --> typescript-loader
+                loader: ['ts-loader', 'angular2-template-loader'] // files will pass through right to left loaders template-loader --> typescript-loader
             },
             {
                 test: /\.html$/,
@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: ['file?name=assets/[name].[hash].[ext]']
+                loader: ['file-loader?name=assets/[name].[hash].[ext]']
             },
             {
                 test: /\.css$/,
