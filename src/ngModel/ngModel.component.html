@@ -1,0 +1,22 @@
+<h1>Normal usage of ng  Model</h1>
+<input [(ngModel)]="username">
+<p>Hello {{username}}</p>
+
+<!-->
+ngModel behind the scene:
+<input [ngModel]="username" (ngModelChange)="username = $event">
+<p>Hello {{username}}!</p>
+Same rules apply. The property binding [ngModel] takes care of updating the underlying input DOM element.
+The event binding (ngModelChange) notifies the outside world when there was a change in the DOM.
+We also notice that the handler expression uses only $event and no longer $event.target.value.
+Why is that? As we’ve mentioned earlier, $event is the payload of the emitted event.
+In other words, ngModelChange takes care of extracting target.value from the inner $event payload,
+and simply emits that (to be technically correct, it’s actually the DefaultValueAccessor that takes of the extracting that value and also writing to the underlying DOM object).
+</!-->
+
+<br>
+
+<h1>Breakup in property and event binding</h1>
+<!-- $event - Is an expression exposed in event bindings by Angular, which has the value of the event’s payload, InputEventObject instance in this case!-->
+<input [value]="username" (input)="username = $event.target.value">
+<p>Hello {{username}}</p>
