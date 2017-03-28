@@ -20,3 +20,10 @@ and simply emits that (to be technically correct, it’s actually the DefaultVal
 <!-- $event - Is an expression exposed in event bindings by Angular, which has the value of the event’s payload, InputEventObject instance in this case!-->
 <input [value]="username" (input)="username = $event.target.value">
 <p>Hello {{username}}</p>
+
+
+
+<h1>Using custom myNgModelDirective</h1>
+<!-- $event - Is an expression exposed in event bindings by Angular, which has the value of the event’s payload, InputEventObject instance in this case!-->
+<input [(myNgModel)]="username">
+<p>Hello {{username}}</p>
